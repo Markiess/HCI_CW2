@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photographing a runner · Reading prototype</title>
+<style>
+:root{color-scheme:light;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#202020;background:white;--sidebar:250px;--width:736px}
+*{box-sizing:border-box}body{margin:0}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #476d85;outline-offset:3px}button{border:0;background:transparent}svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}.icons{display:none}[hidden]{display:none!important}
+.app{height:100vh;height:100dvh;display:flex;overflow:hidden}.side{width:var(--sidebar);flex:none;background:#f9f9f9;padding:13px 10px;display:flex;flex-direction:column;gap:4px}.sidehead,.bar,.profile,.action,.brand,.inline{display:flex;align-items:center}.sidehead{justify-content:space-between;padding:0 5px 12px}.logo{font-size:22px;font-weight:650;letter-spacing:-1px;padding-left:4px}.ico{width:34px;height:34px;display:grid;place-items:center;border-radius:8px}.ico:hover,.action:hover{background:#eaeaea}.action{width:100%;gap:11px;border-radius:9px;text-align:left;padding:10px 12px;font-size:14px}.current{background:#eaeaea}.sectionlabel{font-size:13px;color:#636363;margin:31px 12px 6px;font-weight:600}.profile{gap:10px;margin-top:auto;border-top:1px solid #e5e5e5;padding:15px 5px 2px;font-size:14px}.avatar{background:#535353;color:#fff;border-radius:100%;width:32px;height:32px;display:grid;place-items:center;font-size:12px}.profile small{display:block;color:#646464;margin-top:2px}main{min-width:0;flex:1;display:flex;flex-direction:column}.bar{justify-content:space-between;min-height:56px;padding:0 20px;border-bottom:1px solid #f4f4f4}.brand{gap:9px;font-size:19px;font-weight:600;letter-spacing:-.6px}.restart{padding:7px 12px;font-size:13px;border:1px solid #dedede;border-radius:20px;gap:6px}.restart:hover{background:#f5f5f5}.restart svg{width:15px}.thread{flex:1;overflow:auto;overflow-anchor:none}.column{width:min(calc(100% - 48px),var(--width));margin:0 auto;padding:30px 0 60px}.question{margin:0 0 28px auto;background:#f3f3f3;border-radius:20px;padding:12px 19px;max-width:min(84%,560px);font-size:16px;line-height:1.55;width:fit-content}.reply{font-size:16px;line-height:1.65}.outline{margin:0 0 24px}.outline h1{font-size:17px;margin:0 0 6px}.entry{border-bottom:1px solid #e8e8e8}.disclosure{width:100%;text-align:left;border-radius:6px;display:flex;align-items:center;gap:9px;font-weight:550;min-height:39px;padding:6px 5px}.disclosure:hover{background:#f6f6f6}.disclosure svg{width:15px;height:15px;transition:transform .13s}.disclosure[aria-expanded=true] svg{transform:rotate(90deg)}.preview{margin:0 0 13px 29px}.preview p{margin:1px 0 9px;color:#454545}.go{border:1px solid #d1d1d1;padding:5px 12px;border-radius:18px;font-size:14px;line-height:1.45}.go:hover,.back:hover{background:#f2f2f2}article section{margin:26px 0 36px}article h2{font-size:21px;line-height:1.4;letter-spacing:-.4px;margin:0 0 10px}article p{margin:0 0 14px}article h2:focus{outline:0}.match{border-left:3px solid #727272;background:#f2f2f2;padding:8px 12px;border-radius:0 5px 5px 0}.back{font-size:14px;text-decoration:underline;text-underline-offset:3px;border-radius:4px;padding:3px 5px}.dock{width:min(calc(100% - 48px),var(--width));align-self:center;background:white;padding:5px 0 8px}.composer{border:1px solid #dedede;box-shadow:0 2px 7px #0001;border-radius:27px;padding:12px 15px;display:flex;align-items:center;gap:14px;color:#666;min-height:53px}.composer .send{margin-left:auto;border-radius:50%;width:29px;height:29px;display:grid;place-items:center;background:#e6e6e6}.note{text-align:center;font-size:12px;color:#707070;padding-top:8px}.shade{display:none}.app.collapsed .side{display:none}
+@media(max-width:760px){.side{position:absolute;z-index:3;inset:0 auto 0 0;width:min(270px,80vw)}.shade{display:block;position:fixed;inset:0;background:#0004;z-index:2}.collapsed .shade{display:none}.column,.dock{width:calc(100% - 34px)}.bar{padding:0 10px}.column{padding-top:17px}.question{max-width:90%}}
+</style></head><body>
+<svg class="icons" xmlns="http://www.w3.org/2000/svg">
+<symbol id="panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 6m-2-6V5m0 6h6"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v12H9l-5 4z"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 18V6m-6 6 6-6 6 6"/></symbol></svg>
+<div class="app"><button class="shade" aria-label="Close sidebar"></button><aside class="side" aria-label="Chat sidebar"><div class="sidehead"><span class="logo">ChatGPT</span><button class="ico toggle" aria-label="Close sidebar"><svg><use href="#panel"/></svg></button></div><div class="sectionlabel">Your chats</div><button class="action current" aria-current="page"><svg><use href="#chat"/></svg>Photographing a runner</button><div class="profile"><span class="avatar">DR</span><span>Demo reader<small>Coursework prototype</small></span></div></aside>
+<main><header class="bar"><div class="brand"><button class="ico toggle opener" aria-label="Open sidebar" hidden><svg><use href="#panel"/></svg></button>ChatGPT</div><button class="restart inline"><svg><use href="#reset"/></svg>Restart demo</button></header>
+<div class="thread"><div class="column"><p class="question">How do I freeze motion in a photo of a runner? What shutter speed should I start with, and what should I try if the runner still looks blurred?</p><div class="reply"><nav class="outline" aria-label="Sections in this reply"><h1>In this reply</h1></nav><article aria-label="Photography reply"></article></div></div></div>
+<footer class="dock"><div class="composer" aria-hidden="true"><svg><use href="#plus"/></svg><span>Ask anything</span><span class="send"><svg><use href="#up"/></svg></span></div><div class="note">Interactive coursework prototype · Sample conversation</div></footer></main></div>
+<script>
+const passages=[{"title":"Shutter speed","paragraphs":["Shutter speed is the exposure time. A shorter exposure records less movement.","Your camera might display the setting as a fraction of a second. At 1/250 s the shutter is open for twice as long as it is at 1/500 s. For a moving subject, that difference can affect how far its image travels across the frame during the exposure.","To see the effect, keep your position and photograph the same movement more than once. Compare a detail on the moving subject, such as the edge of a shoe, across the frames."]},{"title":"Freeze motion","paragraphs":["Try 1/500 s for a runner. Check the result and adjust.","If the runner is still blurred, try 1/1000 s. Look closely at the hands and feet as well as the face. Compare the two shots at the same size so you can judge which one captures the movement the way you want.","Use a similar part of the runner’s stride for the next shot. It is easier to judge the effect of the changed setting when the subject is moving in roughly the same direction and the framing stays similar."]},{"title":"Motion blur","paragraphs":["A little blur can show the direction of movement. Decide which part of the scene you want to keep sharp.","For example, you might follow a moving cyclist with the camera as you take the shot. Part of the cyclist may stay recognisable while the background stretches into streaks. That gives a different impression from a frame in which every detail appears still."]}];
+const app=document.querySelector('.app');
+const thread=document.querySelector('.thread');
+const outline=document.querySelector('.outline');
+const article=document.querySelector('article');
+const controls=[];
+let opened=null;
+function button(label,cls){const b=document.createElement('button');b.type='button';b.className=cls;b.textContent=label;return b}
+function showPreview(index){
+  controls.forEach((item,i)=>{item.trigger.setAttribute('aria-expanded',String(i===index));item.preview.hidden=i!==index});
+  opened=index;
+}
+function mark(index){
+  controls.forEach((item,i)=>{item.first.classList.toggle('match',i===index);item.back.hidden=i!==index});
+  document.querySelector('.column').style.paddingBottom='';
+}
+function position(el){
+  const column=document.querySelector('.column');
+  const target=thread.scrollTop+el.getBoundingClientRect().top-thread.getBoundingClientRect().top-22;
+  const extra=Math.ceil(target-(thread.scrollHeight-thread.clientHeight));
+  if(extra>0) column.style.paddingBottom=(parseFloat(getComputedStyle(column).paddingBottom)+extra)+'px';
+  el.focus({preventScroll:true});
+  thread.scrollTo({top:target,behavior:'instant'});
+}
+passages.forEach(({title,paragraphs},i)=>{
+  const entry=document.createElement('div');entry.className='entry';
+  const trigger=button(title,'disclosure');trigger.id='heading-'+i;
+  trigger.insertAdjacentHTML('afterbegin','<svg aria-hidden="true"><use href="#chev"/></svg>');
+  trigger.setAttribute('aria-controls','preview-'+i);trigger.setAttribute('aria-expanded','false');
+  const preview=document.createElement('div');preview.className='preview';preview.id='preview-'+i;preview.hidden=true;
+  const quote=document.createElement('p');quote.textContent=paragraphs[0];
+  const go=button('Go to passage','go');preview.append(quote,go);entry.append(trigger,preview);outline.append(entry);
+  const section=document.createElement('section');const heading=document.createElement('h2');heading.tabIndex=-1;heading.textContent=title;
+  section.append(heading);const lines=paragraphs.map(t=>{const p=document.createElement('p');p.textContent=t;section.append(p);return p});
+  const back=button('Back to outline','back');back.hidden=true;section.append(back);article.append(section);
+  controls.push({trigger,preview,heading,first:lines[0],back});
+  trigger.onclick=()=>{showPreview(opened===i?null:i);mark(null)};
+  go.onclick=()=>{mark(i);position(heading)};
+  back.onclick=()=>{showPreview(i);mark(null);position(trigger)};
+});
+const mobile=matchMedia('(max-width:760px)');
+function sidebar(isOpen){app.classList.toggle('collapsed',!isOpen);document.querySelector('.opener').hidden=isOpen}
+sidebar(!mobile.matches);mobile.addEventListener('change',()=>sidebar(!mobile.matches));
+document.querySelectorAll('.toggle,.shade').forEach(b=>b.onclick=()=>{sidebar(app.classList.contains('collapsed'));document.querySelector(app.classList.contains('collapsed')?'.opener':'.side .toggle').focus()});
+function reset(){showPreview(null);mark(null);thread.scrollTop=0;if(mobile.matches)sidebar(false);controls[0].trigger.focus({preventScroll:true})}
+document.querySelector('.restart').onclick=reset;document.querySelector('.current').onclick=reset;
+</script></body></html>
