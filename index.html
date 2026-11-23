@@ -27,11 +27,10 @@ const thread=document.querySelector('.thread');
 const outline=document.querySelector('.outline');
 const article=document.querySelector('article');
 const controls=[];
-let opened=null;
 function button(label,cls){const b=document.createElement('button');b.type='button';b.className=cls;b.textContent=label;return b}
-function showPreview(index){
-  controls.forEach((item,i)=>{item.trigger.setAttribute('aria-expanded',String(i===index));item.preview.hidden=i!==index});
-  opened=index;
+function setExpanded({trigger, preview}, expanded) {
+  trigger.setAttribute('aria-expanded', String(expanded));
+  preview.hidden = !expanded;
 }
 function mark(index){
   controls.forEach((item,i)=>{item.first.classList.toggle('match',i===index);item.back.hidden=i!==index});
@@ -57,14 +56,23 @@ passages.forEach(({title,paragraphs},i)=>{
   section.append(heading);const lines=paragraphs.map(t=>{const p=document.createElement('p');p.textContent=t;section.append(p);return p});
   const back=button('Back to outline','back');back.hidden=true;section.append(back);article.append(section);
   controls.push({trigger,preview,heading,first:lines[0],back});
-  trigger.onclick=()=>{showPreview(opened===i?null:i);mark(null)};
+  trigger.onclick = () => {
+    setExpanded(controls[i], preview.hidden);
+    mark(null);
+  };
   go.onclick=()=>{mark(i);position(heading)};
-  back.onclick=()=>{showPreview(i);mark(null);position(trigger)};
+  back.onclick=()=>{mark(null);position(trigger)};
 });
 const mobile=matchMedia('(max-width:760px)');
 function sidebar(isOpen){app.classList.toggle('collapsed',!isOpen);document.querySelector('.opener').hidden=isOpen}
 sidebar(!mobile.matches);mobile.addEventListener('change',()=>sidebar(!mobile.matches));
 document.querySelectorAll('.toggle,.shade').forEach(b=>b.onclick=()=>{sidebar(app.classList.contains('collapsed'));document.querySelector(app.classList.contains('collapsed')?'.opener':'.side .toggle').focus()});
-function reset(){showPreview(null);mark(null);thread.scrollTop=0;if(mobile.matches)sidebar(false);controls[0].trigger.focus({preventScroll:true})}
+function reset() {
+  controls.forEach(item => setExpanded(item, false));
+  mark(null);
+  thread.scrollTop = 0;
+  if (mobile.matches) sidebar(false);
+  controls[0].trigger.focus({preventScroll:true});
+}
 document.querySelector('.restart').onclick=reset;document.querySelector('.current').onclick=reset;
 </script></body></html>
