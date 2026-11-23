@@ -21,7 +21,36 @@
 <div class="thread"><div class="column"><p class="question">How do I freeze motion in a photo of a runner? What shutter speed should I start with, and what should I try if the runner still looks blurred?</p><div class="reply"><nav class="outline" aria-label="Sections in this reply"><h1>In this reply</h1></nav><article aria-label="Photography reply"></article></div></div></div>
 <footer class="dock"><div class="composer" aria-hidden="true"><svg><use href="#plus"/></svg><span>Ask anything</span><span class="send"><svg><use href="#up"/></svg></span></div><div class="note">Interactive coursework prototype · Sample conversation</div></footer></main></div>
 <script>
-const passages=[{"title":"Shutter speed","paragraphs":["Shutter speed is the exposure time. A shorter exposure records less movement.","Your camera might display the setting as a fraction of a second. At 1/250 s the shutter is open for twice as long as it is at 1/500 s. For a moving subject, that difference can affect how far its image travels across the frame during the exposure.","To see the effect, keep your position and photograph the same movement more than once. Compare a detail on the moving subject, such as the edge of a shoe, across the frames."]},{"title":"Freeze motion","paragraphs":["Try 1/500 s for a runner. Check the result and adjust.","If the runner is still blurred, try 1/1000 s. Look closely at the hands and feet as well as the face. Compare the two shots at the same size so you can judge which one captures the movement the way you want.","Use a similar part of the runner’s stride for the next shot. It is easier to judge the effect of the changed setting when the subject is moving in roughly the same direction and the framing stays similar."]},{"title":"Motion blur","paragraphs":["A little blur can show the direction of movement. Decide which part of the scene you want to keep sharp.","For example, you might follow a moving cyclist with the camera as you take the shot. Part of the cyclist may stay recognisable while the background stretches into streaks. That gives a different impression from a frame in which every detail appears still."]}];
+const passages = [
+  {
+    "title": "Shutter speed",
+    "paragraphs": [
+      "Shutter speed is the exposure time. A shorter exposure records less movement.",
+      "Imagine a runner passing a white lane marker. From where you stand, their red shoe moves from one side of the marker to the other in a single stride. If the shutter is open while the shoe travels several centimetres, its colour spreads across the image. A shorter exposure captures a smaller part of that journey, so the edge of the shoe looks more distinct.",
+      "On many cameras the dial shows fractions of a second. A change from 1/250 s to 1/500 s cuts the exposure time in half. If the aperture and ISO stay fixed, the new frame will also be darker. This is worth checking when a runner moves from a sunny stretch of track into the shade of a stand.",
+      "Where you stand matters too. From the side of the track, the runner crosses your frame quickly. From near the finish line, a runner coming towards you can stay near the centre of the picture for several strides. Even then, a swinging hand may cover quite a distance in the frame. Decide which detail you want to look sharp before choosing your setting."
+    ]
+  },
+  {
+    "title": "Freeze motion",
+    "paragraphs": [
+      "Try 1/500 s for a runner. Check the result and adjust.",
+      "If the runner is still blurred, try 1/1000 s. Take the second shot from the same place and at roughly the same point in the stride. Zoom in to the same size on both frames. Look at the lettering on the bib, the outline of a hand and the leading edge of a shoe. Those details can tell quite different stories in a single photograph.",
+      "Suppose the number on the bib is easy to read but the bright sole of the shoe leaves a short streak. The feet were moving faster across the frame than the torso. For a photograph of a sprinter leaving the blocks, that streak may hide the detail you wanted. For a portrait of someone finishing their first race, a sharp face and a hint of movement in the feet may already give you the picture you had in mind.",
+      "If the rail behind the runner looks crisp while the whole runner looks soft, check where the camera focused. Try continuous autofocus and keep the focus area on the runner as they approach. If stationary details also have streaks in the same direction, steady the camera for the next frame. Comparing the subject with something fixed helps you decide what to change on the next lap.",
+      "In fading light, review the exposure after increasing the shutter speed. If the image is too dark, a wider aperture or a higher ISO can help. Check the face in particular: against a bright sky, the background can look well exposed while the runner's expression is hard to see."
+    ]
+  },
+  {
+    "title": "Motion blur",
+    "paragraphs": [
+      "A little blur can show the direction of movement. Decide which part of the scene you want to keep sharp.",
+      "For a side-on photograph, try following the runner with the camera. Pick them up before they reach the spot where you want to take the picture. Turn smoothly with their movement, release the shutter as they pass, and keep following for a moment afterwards. A row of spectators or a painted fence behind the track can turn into streaks while the runner's torso stays recognisable.",
+      "Try a deliberately slower exposure such as 1/60 s for one pass. A plain sky gives you few clues about whether the pan worked, so choose a background with some texture. Review the runner's face and the background separately. If the background shows movement but the face is difficult to recognise, try a slightly faster setting on the next pass.",
+      "Compare that frame with your sharpest shot from the same position. In one, you may be able to see both shoes clear of the ground. In the other, the streaks behind the runner may better convey how fast they passed you. Keep the version that shows the moment you wanted to remember."
+    ]
+  }
+];
 const app=document.querySelector('.app');
 const thread=document.querySelector('.thread');
 const outline=document.querySelector('.outline');
